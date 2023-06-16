@@ -5,67 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_02_Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="auto">
+        Title="MainWindow" Height="500" Width="600">
+    <DockPanel LastChildFill="False">
+        <DockPanel LastChildFill="False" DockPanel.Dock="Bottom" Height="40" Background="LightGray">
+            <Button x:Name="confirmBTN" DockPanel.Dock="Right" Width="100" Margin="5" IsEnabled="{Binding Path=ToU_Accepted}" Click="confirmBTN_Click">Confirm</Button>
+            <Button x:Name="cancelBTN" DockPanel.Dock="Right" Width="100" Margin="5" Background="IndianRed">Clear</Button>
+        </DockPanel>
+        <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Center" Grid.Column="0">Personal info</Label>
-            <Label HorizontalAlignment="Center" Grid.Column="1">Contanct info</Label>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Column="0" Grid.Row="0">
+
+            <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Name</Label>
-                <TextBox x:Name="nameTextBox" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Personal info</Label>
+                <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">Contact info</Label>
+                <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Room info</Label>
+
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Name</Label>
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Surname</Label>
+                <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Phone</Label>
+                <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">E-mail</Label>
+                <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">People</Label>
+                <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Room type</Label>
+                <Label Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Terms of use</Label>
+
+                <TextBox x:Name="nameTextBox" Grid.Row="1" Grid.Column="1"  Margin="5" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="surnameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="phoneTextBox" Grid.Row="4" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
+                <TextBox Grid.Row="5" x:Name="emailTextBox" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
+                <Grid Grid.Row="7" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="peopleCount_Slider" Grid.Column="0" VerticalAlignment="Center" Margin="5" Minimum="1" Maximum="12" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Path=peopleCount}"></Slider>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=peopleCount}"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="8" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="roomType" Name="cheap" Grid.Column = "0" VerticalAlignment="Center" HorizontalAlignment="Center" >Cheap</RadioButton>
+                    <RadioButton GroupName="roomType" Name="standart" Grid.Column = "1" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="True">Standart</RadioButton>
+                    <RadioButton GroupName="roomType" Name="luxe" Grid.Column = "2" VerticalAlignment="Center" HorizontalAlignment="Center" >Luxe</RadioButton>
+                </Grid>
+                <CheckBox x:Name="termsOfUse_CheckBox" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" Margin="10" IsChecked="{Binding Path=ToU_Accepted}">Accept</CheckBox>
             </Grid>
-            <Grid Grid.Column="0" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Surname</Label>
-                <TextBox x:Name="surnameTextBox" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
-            </Grid>
-            <Grid Grid.Column="1" Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Phone</Label>
-                <TextBox x:Name="phoneTextBox" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
-            </Grid>
-            <Grid Grid.Column="1" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">E-mail</Label>
-                <TextBox x:Name="emailTextBox" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"></TextBox>
-            </Grid>
-            <Grid Grid.Column="0" Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="40"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">People</Label>
-                <Slider Grid.Column="1" VerticalAlignment="Center" Margin="5" Minimum="1" Maximum="12" TickFrequency="1" IsSnapToTickEnabled="True" ></Slider>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" HorizontalAlignment="Center">Arrival date</Label>
+                <Label Grid.Row="2" HorizontalAlignment="Center">Departure date</Label>
+                <Calendar x:Name="arriveDateCalendar" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Calendar>
+                <Calendar x:Name="departDateCalendar" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"></Calendar>
             </Grid>
         </Grid>
     </DockPanel>
