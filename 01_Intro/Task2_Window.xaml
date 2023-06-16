@@ -74,7 +74,7 @@
                 <TextBlock TextWrapping="Wrap" Padding="3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</TextBlock>
             </DockPanel>
             <DockPanel Grid.Column="0" Grid.Row="1" Margin="10">
-                <Label DockPanel.Dock="Top" HorizontalAlignment="Left" Foreground="White" Background="CadetBlue">Lorem</Label>
+                <Label DockPanel.Dock="Top" HorizontalAlignment="Left" Foreground="White" Background="CadetBlue">Ipsum</Label>
                 <Label DockPanel.Dock="Top" HorizontalAlignment="Left" FontSize="15">Lorem Ipsum</Label>
                 <Label DockPanel.Dock="Bottom" HorizontalAlignment="Left" FontSize="13" Foreground="CadetBlue">Lorem Ipsum</Label>
                 <Border DockPanel.Dock="Bottom" Height="3" Background="CadetBlue" Margin="3"></Border>
